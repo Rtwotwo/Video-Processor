@@ -45,7 +45,7 @@ for i=0:length(EbN0)% 0: 统计OFDM符号能量
       % Tx______________________________________________________________
 %       X= randint(1,Nused*Nframe,M); % bit: integer vector
       X = randi(M, 1, Nused * Nframe) - 1;% M调制阶数
-      Xmod= qammod(X,M,0,'gray')/norms(Nbps);
+      Xmod= qammod(X,M,'gray')/norms(Nbps);
       if NgType~=2, x_GI=zeros(1,Nframe*Nsym);
        elseif NgType==2, x_GI= zeros(1,Nframe*Nsym+Ng);
         % Extend an OFDM symbol by Ng zeros 
@@ -88,7 +88,7 @@ for i=0:length(EbN0)% 0: 统计OFDM符号能量
          end
          kk1=kk1+Nsym; kk2=kk2+Nfft; kk3=kk3+Nused; kk4=kk4+Nfft; kk5=kk5+Nfft;
       end
-      X_r=qamdemod(Xmod_r*norms(Nbps),M,0,'gray');
+      X_r=qamdemod(Xmod_r*norms(Nbps),M,'gray');
       Neb=Neb+sum(sum(de2bi(X_r,Nbps)~=de2bi(X,Nbps)));
       Ntb=Ntb+Nused*Nframe*Nbps;  %[Ber,Neb,Ntb]=ber(bit_Rx,bit,Nbps); 
       if Neb>Target_neb, break; end

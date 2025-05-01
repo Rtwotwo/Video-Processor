@@ -45,8 +45,8 @@ figure(2), clf, subplot(311)
 [xI_dist,bins] = hist(HistI,N_bin);   bar(bins,xI_dist/sum(xI_dist),'k');
 title([Mod ', N=' num2str(N)]);  ylabel('pdf of x_{I}(t)');
 subplot(312)
-[xQ_dist,bins] = hist(HistQ,N_bin);  bar(bins,xQ_dist/sum(xQ_dist),'k');
+[xQ_dist,bins] = hist(HistQ,N_bin);  bar(bins,xQ_dist/sum(xQ_dist),'r');
 ylabel('pdf of x_{Q}(t)');
 subplot(313)
-[xabs_dist,bins] = hist(abs(HistI+j*HistI),N_bin);  bar(bins,xabs_dist/sum(xabs_dist),'k');
+[xabs_dist,bins] = hist(abs(HistI+j*HistI),N_bin);  bar(bins,xabs_dist/sum(xabs_dist),'g');
 ylabel('pdf of |x(t)|');  xlabel('x_{0}');

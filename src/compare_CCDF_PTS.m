@@ -12,6 +12,7 @@ dBs = [4:0.1:11]; dBcs = dBs+(dBs(2)-dBs(1))/2;
 Nblk = 3000; % Number of OFDM blocks for iteration
 rand('twister',5489); randn('state',0);
 CCDF_OFDMa = CCDF_OFDMA(N,Nos,b,dBs,Nblk);
+% display(dBs, CCDF_OFDMa)
 semilogy(dBs,CCDF_OFDMa,'k'), hold on
 for k = 1:length(Nsbs)
    Nsb=Nsbs(k); str(k,:)=sprintf('No of subblocks=%2d',Nsb);

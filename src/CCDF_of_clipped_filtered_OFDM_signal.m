@@ -16,8 +16,9 @@ t = [0:Ts:2*Tsym-Ts]/Tsym;
 if b==1, Mod='BPSK'; elseif b==2, Mod='QPSK'; else Mod=[num2str(M) 'QAM']; end
 % const = qammod([0:M-1],M);         % QAM modulation
 A = modnorm(qammod([0:M-1],M),'avpow',1); % Normalization factor
-mdmod = modem.qammod('M',M, 'SymbolOrder','Gray','InputType','Bit');
-mddem = modem.qamdemod('M',M, 'SymbolOrder','Gray','OutputType','Bit');
+A = [0, N-1]';
+mdmod = qammod(A,M, 'SymbolOrder','Gray','InputType','Bit');
+mddem = qamdemod(mdmod,M, 'SymbolOrder','Gray','OutputType','Bit');
 %Hd = euqiripple_filter_fin; Fcoeff = Hd.numerator; Lcoeff = length(Fcoeff);
 Fs=8; Norder=104; dens=20; % Sampling frequency, Order, and Density factor of filter
 FF=[0 1.4 1.5 2.5 2.6 Fs/2]; % Stopband/Passband/Stopband frequency edge vector

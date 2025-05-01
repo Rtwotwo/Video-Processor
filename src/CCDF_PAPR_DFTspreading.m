@@ -12,7 +12,7 @@ function [CCDF,PAPRs]=CCDF_PAPR_DFTspreading(fdma_type,Ndb,b,N,dBcs,Nblk,psf,Nos
 %?2010 John Wiley & Sons (Asia) Pte Ltd
 
 M=2^b; Es=1; A=sqrt(3/2/(M-1)*Es); % Alphbet size and Normalization factor for QAM
-mod_object=modem.qammod('M',M,'SymbolOrder','gray'); 
+mod_object=qammod('M',M,'SymbolOrder','gray'); 
 S=N/Ndb; % Spreading factor
 rand('twister',5489); randn('state',0);
 for iter=1:Nblk
